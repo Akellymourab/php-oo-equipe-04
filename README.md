@@ -54,3 +54,8 @@ Para criar/atualizar o esquema do banco de dados, entre no container do PHP e di
 `php bin/doctrine orm:schema-tool:update --force`
 
 Acesse o http://localhost:8080
+
+
+## Comandos Command
+Para popular o banco de dados dos Cursos execute:
+`php bin/populateCourses PopulateCoursesCommand`
