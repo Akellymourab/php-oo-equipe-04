@@ -1,3 +1,8 @@
+<?php
+
+use App\Components\Iterators\CursoIterator;
+
+?>
 <div class="col">
     <a href="/cursos/adicionar" class="btn btn-success"><?= translate('new-course') ?></a>
 </div>
@@ -14,18 +19,21 @@
     <tbody>
         
         <?php
-            foreach ($cursos ?? [] as $cada) {
+            $cursos = $this->cursos;
+            $iterator = new CursoIterator($cursos);
+
+            foreach ($iterator as $curso) {
                 $buttonEdit = translate('button-edit');
                 $buttonDelete = translate('button-delete');
 
                 echo "
                     <tr>
-                        <td>{$cada->name}</td>
-                        <td>{$cada->description}</td>
-                        <td>{$cada->status}</td>
+                        <td>{$curso->name}</td>
+                        <td>{$curso->description}</td>
+                        <td>{$curso->status}</td>
                         <td>
                             <a href='' class='btn btn-warning btn-sm'>{$buttonEdit}</a>
-                            <a href='/cursos/excluir?id={$cada->id}' onclick='return confirmDelete()'  class='btn btn-danger btn-sm'>{$buttonDelete}</a>
+                            <a href='/cursos/excluir?id={$curso->id}' onclick='return confirmDelete()'  class='btn btn-danger btn-sm'>{$buttonDelete}</a>
                         </td>
                     </tr>
                 ";

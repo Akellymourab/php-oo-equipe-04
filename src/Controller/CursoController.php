@@ -11,6 +11,7 @@ final class CursoController extends AbstractController
 {
     public CursoValidator $validator;
     public mixed $entityManager;
+    public array $cursos;
 
     public function __construct()
     {
@@ -20,11 +21,11 @@ final class CursoController extends AbstractController
 
     public function listar(): void
     {
-
         $repository = $this->entityManager->getRepository(Curso::class);
+        $this->cursos = $repository->findAll();
 
         parent::render('curso/listar', [
-            'cursos' => $repository->findAll(),
+            'cursos' => $this->cursos
         ]);
     }
 
