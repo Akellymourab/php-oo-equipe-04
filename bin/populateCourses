@@ -1,9 +1,8 @@
+#!/usr/bin/env php
 <?php
-// populateCourses.php
 
-require_once __DIR__ . '/../src/Command/PopulateCoursesCommand.php';
-require_once __DIR__ . '/../src/Command/CommandInvoker.php';
-// require_once __DIR__ . '/../src/Command/registerCommands.php';
+use App\Components\Commands\CommandInvoker;
+use App\Components\Commands\PopulateCoursesCommand;
 
 $entityManager = require_once dirname(__DIR__) . '/bootstrap.php';
 
